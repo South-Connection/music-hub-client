@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Signup extends Component {
  
-  state = { username: '', password: '' }
+  state = { username: '', password: '', errorMessage: '' }
  
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -16,9 +16,17 @@ class Signup extends Component {
             username: "",
             password: "",
         });
+        this.props.history.push("/playlists");
         // this.props.getUser(response, true);
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+        console.log(error);
+        this.setState({
+        name: "",
+        password: "",
+        errorMessage: error.response.data.errorMessage,
+      });
+    });
   }
    
   handleChange = (event) => {
@@ -29,14 +37,18 @@ class Signup extends Component {
    
   render(){
     return(
-      <div>
-      <h2>Signup</h2>
+      <>
         <form onSubmit={this.handleFormSubmit}>
+        <h2>Signup</h2>
+        {this.state.errorMessage && <h3 className="error"> {this.state.errorMessage} </h3>}
+
           <label>
           Username:
             <input
               type="text"
+              required
               name="username"
+              placeholder="username"
               value={this.state.username}
               onChange={this.handleChange}
             />
@@ -46,7 +58,9 @@ class Signup extends Component {
           Password:
             <input
               type="password"
+              required
               name="password"
+              placeholder="password"
               value={this.state.password}
               onChange={this.handleChange}
             />
@@ -60,7 +74,7 @@ class Signup extends Component {
           <Link to={"/"}> Login</Link>
         </p>
    
-      </div>
+      </>
     )
   }
 }
