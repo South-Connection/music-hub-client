@@ -16,7 +16,7 @@ class Login extends Component {
                 this.setState({ username: '', password: '' });
                 //calling the method through  prop that we are sending from mother comp
                 this.props.getUser(response, true);
-                this.props.history.push("/playlists"); // render to playlists
+                // this.props.history.push("/playlists"); // render to playlists
             })
             .catch(error => this.setState({ errorMessage: "Your username or password is incorrect" }, error));
     };
