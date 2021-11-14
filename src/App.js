@@ -9,6 +9,7 @@ import authService from './components/auth/auth-service';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Playlist from './components/playlists/Playlist';
+import PlaylistDetails from './components/playlists/PlaylistDetails';
 
 
 class App extends Component{
@@ -52,15 +53,16 @@ class App extends Component{
   render(){
   return (
     <div className="App">
-    <Router>
-    {/* <Navbar/> */}
-    <Switch>
-    <Route exact path="/signup" component={Signup} />
-    <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
-    <Route exact path="/playlists/create" component={AddPlaylist} />
-    <Route exact path="/playlists" component={Playlist} />
-    </Switch>
-    </Router>
+      <Router>
+      {/* <Navbar/> */}
+        <Switch>
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
+        <Route exact path="/playlists/create" component={AddPlaylist} />
+        <Route exact path="/playlists" component={Playlist} />
+        <Route exact path="/playlists/:id" component={PlaylistDetails} />
+        </Switch>
+      </Router>
     </div>
   );
   }
