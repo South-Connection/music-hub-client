@@ -8,6 +8,7 @@ import AddPlaylist from './components/playlists/AddPlaylist';
 import authService from './components/auth/auth-service';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import Playlist from './components/playlists/Playlist';
 
 
 class App extends Component{
@@ -57,6 +58,7 @@ class App extends Component{
     <Route exact path="/signup" component={Signup} />
     <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
     <Route exact path="/playlists/create" component={AddPlaylist} />
+    <Route exact path="/playlists" component={Playlist} />
     </Switch>
     </Router>
     </div>
