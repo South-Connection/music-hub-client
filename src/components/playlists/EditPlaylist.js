@@ -38,8 +38,10 @@ class EditPlaylist extends Component {
       return <EditPlaylist thePlaylist={this.state} getThePlaylist={this.getSinglePlaylist} />
     } 
 } 
+
+
  
-  render(){
+    render(){
     return (
       <div>
         <hr />

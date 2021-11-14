@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Playlist from "./Playlist";
 
 class AddPlaylist extends Component {
   state = {
     title: "",
     description: "",
-    songs: []
+    // songs: []
     
   };
 
@@ -15,7 +16,7 @@ class AddPlaylist extends Component {
 
     const title = this.state.title;
     const description = this.state.description;
-    const songTitle = this.state.songs[0].title;
+    // const songTitle = this.state.songs[0].title;
     // const songLink = this.state.songs[0].link
     
 
@@ -24,10 +25,12 @@ class AddPlaylist extends Component {
     // const guests = this.state.guests;
 
     axios
-      .post("http://localhost:5000/api/playlists", { title, description, songTitle})
+      .post("http://localhost:5000/api/playlists", { title, description})
       .then(() => {
         // this.props.getData();
-        this.setState({ title: "", description: "" , songTitle: ""});
+        this.setState({ title: "", description: ""});
+        this.props.history.push("/playlists/");
+         
       })
       .catch((error) => console.log(error));
   };
@@ -55,25 +58,7 @@ class AddPlaylist extends Component {
             value={this.state.description}
             onChange={(e) => this.handleChange(e)}
           />
-           {/* <label>add song name:</label>
-           <textarea
-            type="text"
-            name="songTitle"
-            value={this.state.songs[0].title}
-            onChange={(e) => this.handleChange(e)} */}
-          {/* /> */}
-          <label>and link:</label>
-          {/* <textarea
-            type="text"
-            name="songs.link"
-            value={this.state.songLink}
-            onChange={(e) => this.handleChange(e)}
-          /> */}
-          <label>add guests:</label>
-          <select name="guests" id="guests" multiple>
-          value={this.state.guests}
-            onChange={(e) => this.handleChange(e)}
-          </select>
+          
           
           <input type="submit" value="Submit" />
         </form>

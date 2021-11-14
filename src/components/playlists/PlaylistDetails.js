@@ -7,11 +7,11 @@ class PlaylistDetails extends Component {
   state = {}
 
 
-  componentDidMount(){
+    componentDidMount(){
     this.getSinglePlaylist();
-}
+    }
 
-  getSinglePlaylist = () => {
+    getSinglePlaylist = () => {
     const { params } = this.props.match;
     axios.get(`http://localhost:5000/api/playlists/${params.id}`)
     .then( responseFromApi =>{
@@ -21,7 +21,19 @@ class PlaylistDetails extends Component {
     .catch((err)=>{
         console.log(err)
     })
-}
+    }
+    // DELETE PROJECT:
+    deleteProject = () => {
+        const { params } = this.props.match;
+        console.log('hello clg', params)
+        axios.delete(`http://localhost:5000/api/playlists/${params.id}`)
+        .then( () =>{
+            this.props.history.push('/playlists'); // !!!         
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
     render(){
     return(
@@ -39,6 +51,9 @@ class PlaylistDetails extends Component {
             )})
           } // Work in progress*/} 
         <button type="button">Add Song</button>
+
+        <br/>
+        <button onClick={() => this.deleteProject()}>Delete playlist</button>
         <br/>
         
         <Link to={'/playlists'}>Back to playlists</Link>
