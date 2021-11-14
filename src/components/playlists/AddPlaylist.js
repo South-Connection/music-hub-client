@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Playlist from "./Playlist";
+import Navbar from "../navbar/Navbar";
 
 class AddPlaylist extends Component {
   state = {
@@ -43,6 +44,7 @@ class AddPlaylist extends Component {
   render() {
     return (
       <div>
+      <Navbar />
         <form onSubmit={this.handleFormSubmit}>
           <label>Add a cool title for your playlist:</label>
           <input

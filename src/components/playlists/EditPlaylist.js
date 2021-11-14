@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import Navbar from '../navbar/Navbar';
  
 class EditPlaylist extends Component {
   state = {
@@ -44,6 +45,7 @@ class EditPlaylist extends Component {
     render(){
     return (
       <div>
+      <Navbar />
         <hr />
         <h3>Edit form</h3>
         <form onSubmit={this.handleFormSubmit}>
