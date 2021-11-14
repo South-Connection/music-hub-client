@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import Playlist from './Playlist';
 
 class PlaylistDetails extends Component {
   state = {}
@@ -27,6 +28,19 @@ class PlaylistDetails extends Component {
       <div>
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
+        <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
+        <br/>
+        {/* { this.state.songs.map( song => {
+            return (
+              <ol key={song._id}>                
+                  <li>{song.title}</li>
+                  <button>delete</button>
+              </ol>
+            )})
+          } // Work in progress*/} 
+        <button type="button">Add Song</button>
+        <br/>
+        
         <Link to={'/playlists'}>Back to playlists</Link>
       </div>
     )

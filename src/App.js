@@ -10,6 +10,7 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Playlist from './components/playlists/Playlist';
 import PlaylistDetails from './components/playlists/PlaylistDetails';
+import EditPlaylist from './components/playlists/EditPlaylist';
 
 
 class App extends Component{
@@ -61,6 +62,7 @@ class App extends Component{
         <Route exact path="/playlists/create" component={AddPlaylist} />
         <Route exact path="/playlists" component={Playlist} />
         <Route exact path="/playlists/:id" component={PlaylistDetails} />
+        <Route exact path="/playlists/:id/edit" component={EditPlaylist} />
         </Switch>
       </Router>
     </div>
