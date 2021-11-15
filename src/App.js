@@ -4,7 +4,7 @@ import './App.css';
 import {  BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import AddPlaylist from './components/playlists/AddPlaylist';
-// import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/Navbar';
 import authService from './components/auth/auth-service';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
@@ -65,11 +65,12 @@ class App extends Component{
   return (
     <div className="App">
       <Router>
-      {/* <Navbar/> */}
+      <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} />
         <Switch>
         <Route
          exact
-         path="/signup" component={Signup} />
+         path="/signup" 
+         render={props => <Signup {...props} getUser={this.getTheUser} />} />
         <Route
          exact
           path="/"

@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 
 class Login extends Component {
     state = { username: '', password: '', errorMessage: '' };
+    
+    logoutUser = () => {
+        authService.logout().then(() => {
+          this.props.getUser(null, false);
+        });
+      };
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -67,6 +73,11 @@ class Login extends Component {
                     Don't have account?
                     <Link to={'/signup'}> Signup</Link>
                 </p>
+                <p>
+        <Link to="/">
+                <button onClick={() => this.logoutUser()}>Logout</button>
+              </Link>
+              </p>
             </>
         );
     }

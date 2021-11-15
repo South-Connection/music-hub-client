@@ -12,20 +12,19 @@ class Signup extends Component {
    
     authService
     .signup(username, password)
-    .then(createdUser => {
+    .then(response => {
         this.setState({
             username: "",
             password: "",
         });
+        this.props.getUser(response, true);
         this.props.history.push("/playlists");
-        // this.props.getUser(response, true);
+        
     })
     .catch(error => {
-        console.log(error);
         this.setState({
-        name: "",
-        password: "",
-        errorMessage: error.response.data.errorMessage,
+        errorMessage: 
+        "Password needs to have at least 8 characters and must contain at least one number, one lowercase and one uppercase letter. Username must be unique.",
       });
     });
   }

@@ -45,7 +45,6 @@ class EditPlaylist extends Component {
     render(){
     return (
       <div>
-      <Navbar />
         <hr />
         <h3>Edit form</h3>
         <form onSubmit={this.handleFormSubmit}>

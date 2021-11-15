@@ -36,7 +36,7 @@ class PlaylistDetails extends Component {
         })
 
         //is throwing error: ownershipCheck is undefined//
-        
+
         // ownershipCheck = (playlist) => {
         //   const currentUserIsOwner =
         //     this.props.user && (playlist.owner === this.props.user._id);
@@ -56,7 +56,6 @@ class PlaylistDetails extends Component {
     render(){
     return(
       <div>
-      <Navbar />
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
         <div> {this.ownershipCheck(this.state)} </div> 

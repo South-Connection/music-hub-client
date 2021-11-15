@@ -49,7 +49,6 @@ class AddPlaylist extends Component {
   render() {
     return (
       <div>
-      <Navbar />
         <form onSubmit={this.handleFormSubmit}>
           <label>Add a cool title for your playlist:</label>
           <input
