@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import Playlist from './Playlist';
+import Navbar from '../navbar/Navbar';
 
 class PlaylistDetails extends Component {
   state = {}
@@ -38,6 +39,7 @@ class PlaylistDetails extends Component {
     render(){
     return(
       <div>
+      <Navbar />
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
         <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>

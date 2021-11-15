@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import AddPlaylist from './AddPlaylist'; 
+import Navbar from '../navbar/Navbar';
 
 class Playlist extends Component {
   state = { listOfPlaylists: [] }
@@ -25,6 +26,7 @@ class Playlist extends Component {
   render(){
     return(
       <div>
+        <Navbar />
         <div>
           { this.state.listOfPlaylists.map( playlist => {
             return (
