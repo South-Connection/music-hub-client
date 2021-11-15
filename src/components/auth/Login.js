@@ -13,12 +13,17 @@ class Login extends Component {
             .login(username, password)
             .then(response => {
                 //clear the form
-                this.setState({ username: '', password: '' });
+                this.setState({
+                    username: '',
+                    password: ''
+                });
                 //calling the method through  prop that we are sending from mother comp
                 this.props.getUser(response, true);
                 this.props.history.push("/playlists"); // render to playlists
             })
-            .catch(error => this.setState({ errorMessage: "Your username or password is incorrect" }, error));
+            .catch(error => {
+                this.setState({ errorMessage: "Your username or password is incorrect" });
+            });
     };
 
     handleChange = event => {
@@ -28,10 +33,10 @@ class Login extends Component {
 
     render() {
         return (
-            <>            
+            <>
                 <form onSubmit={this.handleFormSubmit}>
-                <h2>Login</h2>
-                {this.state.errorMessage && <h3 className="error"> {this.state.errorMessage} </h3>}
+                    <h2>Login</h2>
+                    {this.state.errorMessage && <h3 className="error"> {this.state.errorMessage} </h3>}
                     <label>
                         Username:
                         <input
