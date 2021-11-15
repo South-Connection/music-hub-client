@@ -14,7 +14,7 @@ class PlaylistDetails extends Component {
 
     getSinglePlaylist = () => {
     const { params } = this.props.match;
-    axios.get(`http://localhost:5000/api/playlists/${params.id}`)
+    axios.get(`http://localhost:5000/api/playlists/${params.id}`, { withCredentials: true })
     .then( responseFromApi =>{
         const thePlaylist = responseFromApi.data;
         this.setState(thePlaylist);
@@ -34,6 +34,23 @@ class PlaylistDetails extends Component {
         .catch((err)=>{
             console.log(err)
         })
+
+        //is throwing error: ownershipCheck is undefined//
+        
+        // ownershipCheck = (playlist) => {
+        //   const currentUserIsOwner =
+        //     this.props.user && (playlist.owner === this.props.user._id);
+       
+        //   if (currentUserIsOwner) {
+        //     return (
+        //       <div>
+        //         <button onClick={() => this.deletePlaylist(this.state._id)}>
+        //           Delete project
+        //         </button>
+        //       </div>
+        //     );
+        //   }
+        // };
     }
 
     render(){
@@ -42,6 +59,7 @@ class PlaylistDetails extends Component {
       <Navbar />
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
+        <div> {this.ownershipCheck(this.state)} </div> 
         <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
         <br/>
         {/* { this.state.songs.map( song => {

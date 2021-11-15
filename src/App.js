@@ -11,6 +11,7 @@ import Login from './components/auth/Login';
 import Playlist from './components/playlists/Playlist';
 import PlaylistDetails from './components/playlists/PlaylistDetails';
 import EditPlaylist from './components/playlists/EditPlaylist';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 
 class App extends Component{
@@ -66,12 +67,34 @@ class App extends Component{
       <Router>
       {/* <Navbar/> */}
         <Switch>
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
-        <Route exact path="/playlists/create" component={AddPlaylist} />
-        <Route exact path="/playlists" component={Playlist} />
-        <Route exact path="/playlists/:id" render={props => <PlaylistDetails {...props} user={this.state.user} />} />
-        <Route exact path="/playlists/:id/edit" component={EditPlaylist} />
+        <Route
+         exact
+         path="/signup" component={Signup} />
+        <Route
+         exact
+          path="/"
+          render={props => <Login {...props} getUser={this.getTheUser} />} />
+        <ProtectedRoute
+          user={this.state.user}
+          path="/playlists/create" 
+          component={AddPlaylist}
+           />
+        <ProtectedRoute
+          user={this.state.user}
+          path="/playlists" 
+          component={Playlist}
+           />
+        <ProtectedRoute
+         path="/playlists/:id" 
+         render={props => <PlaylistDetails {...props} 
+         user={this.state.user} />} 
+
+         />
+        <ProtectedRoute 
+        user={this.state.user}
+        path="/playlists/:id/edit" 
+        component={EditPlaylist} 
+        />
         </Switch>
       </Router>
     </div>
