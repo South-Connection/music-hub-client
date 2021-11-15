@@ -33,10 +33,19 @@ class App extends Component{
       authService
         .loggedin()
         .then(data => {
+
+          if(data){
           this.setState({
             user: data,
             isLoggedIn: true
           });
+        } else {
+          this.setState({
+            user: null,
+            isLoggedIn: false
+          });
+
+        }
         })
         .catch(err => {
           this.setState({
@@ -61,7 +70,7 @@ class App extends Component{
         <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
         <Route exact path="/playlists/create" component={AddPlaylist} />
         <Route exact path="/playlists" component={Playlist} />
-        <Route exact path="/playlists/:id" component={PlaylistDetails} />
+        <Route exact path="/playlists/:id" render={props => <PlaylistDetails {...props} user={this.state.user} />} />
         <Route exact path="/playlists/:id/edit" component={EditPlaylist} />
         </Switch>
       </Router>

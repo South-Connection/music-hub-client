@@ -11,7 +11,7 @@ class Playlist extends Component {
   state = { listOfPlaylists: [] }
 
   getAllPlaylists = () =>{
-    axios.get(`http://localhost:5000/api/playlists`)
+    axios.get(`http://localhost:5000/api/playlists`, { withCredentials: true })
     .then(responseFromApi => {
       this.setState({
         listOfPlaylists: responseFromApi.data
