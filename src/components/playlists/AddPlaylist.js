@@ -6,9 +6,13 @@ class AddPlaylist extends Component {
   state = {
     title: "",
     description: "",
-    // songs: []
+    guests: []
     
+    // songs: []
+
   };
+
+  
 
 
   handleFormSubmit = (event) => {
@@ -16,21 +20,22 @@ class AddPlaylist extends Component {
 
     const title = this.state.title;
     const description = this.state.description;
+    const guests = this.state.guests;
     // const songTitle = this.state.songs[0].title;
     // const songLink = this.state.songs[0].link
-    
+
 
     // console.log(songsTitle)
     // const songsLink = this.state.songs.link;
     // const guests = this.state.guests;
 
     axios
-      .post("http://localhost:5000/api/playlists", { title, description})
+      .post("http://localhost:5000/api/playlists", { title, description, guests })
       .then(() => {
         // this.props.getData();
-        this.setState({ title: "", description: ""});
+        this.setState({ title: "", description: "", guests: [] });
         this.props.history.push("/playlists/");
-         
+
       })
       .catch((error) => console.log(error));
   };
@@ -58,8 +63,25 @@ class AddPlaylist extends Component {
             value={this.state.description}
             onChange={(e) => this.handleChange(e)}
           />
-          
-          
+          <label>add your guests</label>
+          <select>
+            {this.state.guests.map(guest => {
+              console.log("option",  guest)
+              return (
+                <option type="text"
+                  name="guest"
+                  id="guest._id"
+                  multiple
+                  value={this.state.guest._id}
+                  onChange={(e) => this.handleChange(e)}>
+                Banana
+                </option>
+              )
+              
+            })} 
+          </select>
+
+
           <input type="submit" value="Submit" />
         </form>
       </div>
