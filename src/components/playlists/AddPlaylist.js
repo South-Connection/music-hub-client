@@ -7,7 +7,7 @@ class AddPlaylist extends Component {
   state = {
     title: "",
     description: "",
-    guests: []
+    guests: ["maria", "bob"]
     
     // songs: []
 
@@ -33,7 +33,7 @@ class AddPlaylist extends Component {
     axios
       .post("http://localhost:5000/api/playlists", { title, description, guests })
       .then(() => {
-        // this.props.getData();
+        this.props.getData();
         this.setState({ title: "", description: "", guests: [] });
         this.props.history.push("/playlists/");
 
@@ -45,6 +45,20 @@ class AddPlaylist extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+
+
+  // componentDidMount() {
+  //   fetch('http://localhost:5000/api/music-hub-server.users')
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       this.setState({ guests: response })
+  //     })
+  //     .catch(err => console.log(err))
+  // }
+
+
+
+
 
   render() {
     return (
@@ -72,11 +86,10 @@ class AddPlaylist extends Component {
               return (
                 <option type="text"
                   name="guest"
-                  id="guest._id"
+                  // id="guest._id"
                   multiple
-                  value={this.state.guest._id}
-                  onChange={(e) => this.handleChange(e)}>
-                Banana
+                  // value={this.state.guest._id}
+                  onChange={(e) => this.handleChange(e)}>{guest}
                 </option>
               )
               
