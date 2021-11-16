@@ -77,15 +77,21 @@ class App extends Component{
           render={props => <Login {...props} getUser={this.getTheUser} />} />
         <ProtectedRoute
           user={this.state.user}
+          userIsLoggedIn={this.state.isLoggedIn}
+          exact
           path="/playlists/create" 
           component={AddPlaylist}
            />
         <ProtectedRoute
           user={this.state.user}
+          exact
           path="/playlists" 
           component={Playlist}
            />
         <ProtectedRoute
+        user={this.state.user}
+        userIsLoggedIn={this.state.isLoggedIn}
+        exact
          path="/playlists/:id" 
          render={props => <PlaylistDetails {...props} 
          user={this.state.user} />} 
@@ -93,6 +99,7 @@ class App extends Component{
          />
         <ProtectedRoute 
         user={this.state.user}
+        userIsLoggedIn={this.state.isLoggedIn}
         path="/playlists/:id/edit" 
         component={EditPlaylist} 
         />
