@@ -31,7 +31,7 @@ class AddPlaylist extends Component {
     // const guests = this.state.guests;
 
     axios
-      .post("http://localhost:5000/api/playlists", { title, description, guests }, { withCredentials: true })
+      .post("${process.env.REACT_APP_API_URL}/playlists", { title, description, guests }, { withCredentials: true })
       .then(() => {
         this.props.getData();
         this.setState({ title: "", description: "", guests: [] });

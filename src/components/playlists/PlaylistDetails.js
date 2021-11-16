@@ -14,7 +14,7 @@ class PlaylistDetails extends Component {
 
     getSinglePlaylist = () => {
     const { params } = this.props.match;
-    axios.get(`http://localhost:5000/api/playlists/${params.id}`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_API_URL}/playlists/${params.id}`, { withCredentials: true })
     .then( responseFromApi =>{
         const thePlaylist = responseFromApi.data;
         this.setState(thePlaylist);
@@ -27,9 +27,9 @@ class PlaylistDetails extends Component {
     deleteProject = () => {
         const { params } = this.props.match;
         console.log('hello clg', params)
-        axios.delete(`http://localhost:5000/api/playlists/${params.id}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/playlists/${params.id}`)
         .then( () =>{
-            this.props.history.push('/playlists'); // !!!         
+            this.props.history.push('/playlists');      
         })
         .catch((err)=>{
             console.log(err)

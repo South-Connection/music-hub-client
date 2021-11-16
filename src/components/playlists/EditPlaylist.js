@@ -15,7 +15,7 @@ class EditPlaylist extends Component {
  
     event.preventDefault();
  
-    axios.put(`http://localhost:5000/api/playlists/${this._id}`, { title, description }, { withCredentials: true })
+    axios.put(`${process.env.REACT_APP_API_URL}/playlists/${this._id}`, { title, description }, { withCredentials: true })
     .then( () => {
       // Use the passed down api call to render the updated project data
         this.getThePlaylist();   
