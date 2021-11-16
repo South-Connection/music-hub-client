@@ -27,7 +27,7 @@ class PlaylistDetails extends Component {
     deleteProject = () => {
         const { params } = this.props.match;
         console.log('hello clg', params)
-        axios.delete(`${process.env.REACT_APP_API_URL}/playlists/${params.id}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/playlists/${params.id}`, { withCredentials: true })
         .then( () =>{
             this.props.history.push('/playlists');      
         })
