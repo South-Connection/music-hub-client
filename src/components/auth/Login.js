@@ -41,7 +41,7 @@ class Login extends Component {
         return (
             <>
                 <form onSubmit={this.handleFormSubmit}>
-                    <h2>Login</h2>
+                    <h2>Login :)</h2>
                     {this.state.errorMessage && <h3 className="error"> {this.state.errorMessage} </h3>}
                     <label>
                         Username:
