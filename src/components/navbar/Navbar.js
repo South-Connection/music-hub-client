@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import authService from './../auth/auth-service';
+import authService from '../auth/auth-service';
 
 class Navbar extends Component {
+
   logoutUser = () => {
     authService.logout().then(() => {
       this.props.getUser(null, false);
@@ -18,12 +19,17 @@ class Navbar extends Component {
           <div className="logo">
             <img src="/music-hub-logo.png" alt="music-hub"></img>
           </div>
-          <div> {userIsLoggedIn && <li>Welcome, {userData.username}</li>}</div>
+          {/* <div> {userIsLoggedIn && <li>Welcome, {userData.username}</li>}</div> */}
           <nav className="links">
             <ul>
               <li className="nav-button">
                 <Link to="/playlists" style={{ textDecoration: "none" }}>
                 Playlists
+                </Link>
+              </li>
+              <li className="nav-button">
+                <Link to="/playlists/create" style={{ textDecoration: "none" }}>
+                Create
                 </Link>
               </li>
               <li className="nav-button">
@@ -35,7 +41,7 @@ class Navbar extends Component {
           </nav>
         </div>
       );  
-    } else {
+    } else if (userData == null && userData == undefined) {
       return (
         
         <div className="nav-style">
@@ -45,15 +51,15 @@ class Navbar extends Component {
           <nav className="links">
             <ul>
               <li className="nav-button">
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                  Login
+                <Link to="/about" style={{ textDecoration: 'none' }}>
+                  About
                 </Link>
               </li>
-              <li className="nav-button">
+              {/* <li className="nav-button">
                 <Link to="/signup" style={{ textDecoration: 'none' }}>
                   Signup
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>

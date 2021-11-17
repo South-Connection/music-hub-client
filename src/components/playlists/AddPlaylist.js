@@ -1,20 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Playlist from "./Playlist";
-import Navbar from "../navbar/Navbar";
+// import Playlist from "./Playlist";
+// import Navbar from "../navbar/Navbar";
 
 class AddPlaylist extends Component {
   state = {
     title: "",
     description: "",
-    guests: ["maria", "bob"]
-    
-    // songs: []
-
+    guests: ["", ...this.props.allUsers],
+    songs: [],
   };
-
-  
-
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -22,21 +17,18 @@ class AddPlaylist extends Component {
     const title = this.state.title;
     const description = this.state.description;
     const guests = this.state.guests;
-    // const songTitle = this.state.songs[0].title;
-    // const songLink = this.state.songs[0].link
-
-
-    // console.log(songsTitle)
-    // const songsLink = this.state.songs.link;
-    // const guests = this.state.guests;
+    const songs = this.state.songs;
 
     axios
-      .post("http://localhost:5000/api/playlists", { title, description, guests })
+      .post("http://localhost:5000/api/playlists", {
+        title,
+        description,
+        guests,
+        songs,
+      }, {withCredentials: true })
       .then(() => {
-        this.props.getData();
-        this.setState({ title: "", description: "", guests: [] });
-        this.props.history.push("/playlists/");
-
+        this.setState({ title: "", description: "", guests: [], songs: [] }); 
+        this.props.history.push("/playlists");
       })
       .catch((error) => console.log(error));
   };
@@ -46,57 +38,83 @@ class AddPlaylist extends Component {
     this.setState({ [name]: value });
   };
 
-
-  // componentDidMount() {
-  //   fetch('http://localhost:5000/api/music-hub-server.users')
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       this.setState({ guests: response })
-  //     })
-  //     .catch(err => console.log(err))
-  // }
-
-
-
-
+  handleSongs = (event) => {
+    const { name, value } = event.target;
+    
+    console.log("bonjour")
+    this.setState(prevState => ({
+      songs: {
+        ...prevState.songs,        
+        [name]: value,
+      }
+    }))
+  };
 
   render() {
+    // console.log("hello", this.state.songs);
+    // console.log("hello 2", this.state.songs.title)
+    
     return (
-      <div>
-      <Navbar />
+      <div className="box">
+        {/* <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
         <form onSubmit={this.handleFormSubmit}>
-          <label>Add a cool title for your playlist:</label>
+          <label>Playlist name</label>
+          <br />
           <input
+            //key={this.state._id}
+            placeholder="Name"
             type="text"
             name="title"
             value={this.state.title}
             onChange={(e) => this.handleChange(e)}
           />
-          <label>what's the occasion?</label>
+          <br />
+          <label></label>
           <textarea
+            placeholder="Description"
             type="text"
             name="description"
             value={this.state.description}
             onChange={(e) => this.handleChange(e)}
           />
-          <label>add your guests</label>
+          <br />
+          <label>Add song:</label>
+          <br />
+          <input
+            placeholder="song name"
+            type="text"
+            name="title"
+            value={this.state.songs.title}
+            onChange={(e) => this.handleSongs(e)}
+          />
+          <br />
+          <input
+            placeholder="song link"
+            type="url"
+            name="link"
+            value={this.state.songs.link}
+            onChange={(e) => this.handleSongs(e)}
+          />
+          <br />
+          <label>Add guests</label>
+          <br />
           <select>
-            {this.state.guests.map(guest => {
-              console.log("option",  guest)
+            {this.state.guests.map((guest) => {
               return (
-                <option type="text"
+                <option
+                  type="text"
                   name="guest"
                   // id="guest._id"
                   multiple
-                  // value={this.state.guest._id}
-                  onChange={(e) => this.handleChange(e)}>{guest}
+                  value={guest._id}
+                  onChange={(e) => this.handleChange(e)}
+                >
+                  {guest.username}
                 </option>
-              )
-              
-            })} 
+              );
+            })}
           </select>
-
-
+          <br />
           <input type="submit" value="Submit" />
         </form>
       </div>

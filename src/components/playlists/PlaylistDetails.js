@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import Playlist from './Playlist';
-import Navbar from '../navbar/Navbar';
+
+
 
 class PlaylistDetails extends Component {
   state = {}
@@ -21,7 +21,7 @@ class PlaylistDetails extends Component {
     })
     .catch((err)=>{
         console.log(err)
-    })
+    }, {withCredentials: true })
     }
     // DELETE PROJECT:
     deleteProject = () => {
@@ -29,17 +29,23 @@ class PlaylistDetails extends Component {
         console.log('hello clg', params)
         axios.delete(`http://localhost:5000/api/playlists/${params.id}`)
         .then( () =>{
-            this.props.history.push('/playlists'); // !!!         
+            this.props.history.push('/playlists');        
         })
         .catch((err)=>{
             console.log(err)
-        })
+        }, {withCredentials: true })
     }
+
+  //   renderEditForm = () => {
+  //     if(this.state.title){
+  //       return <EditPlaylist thePlaylist={this.state} getThePlaylist={this.getSinglePlaylist} />
+  //     } 
+  // } 
 
     render(){
     return(
       <div>
-      <Navbar />
+      {/* <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
         <h1>{this.state.title}</h1>
         <p>{this.state.description}</p>
         <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
@@ -59,6 +65,8 @@ class PlaylistDetails extends Component {
         <br/>
         
         <Link to={'/playlists'}>Back to playlists</Link>
+        <br/>
+        
       </div>
     )
   }

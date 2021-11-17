@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import AddPlaylist from './AddPlaylist'; 
-import Navbar from '../navbar/Navbar';
 
 class Playlist extends Component {
   state = { listOfPlaylists: [] }
@@ -16,7 +14,7 @@ class Playlist extends Component {
       this.setState({
         listOfPlaylists: responseFromApi.data
       })
-    })
+    }, {withCredentials: true })
   }
 
   componentDidMount() {
@@ -26,7 +24,7 @@ class Playlist extends Component {
   render(){
     return(
       <div>
-        <Navbar />
+        {/* <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
         <div>
           { this.state.listOfPlaylists.map( playlist => {
             return (
