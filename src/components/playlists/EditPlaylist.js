@@ -19,7 +19,7 @@ class EditPlaylist extends Component {
  
     event.preventDefault();
  
-    axios.put(`http://localhost:5000/api/playlists/${this._id}`,{
+    axios.put(`${process.env.REACT_APP_API_URL}/playlists/${this._id}`,{
       title,
       description,
       // guests,

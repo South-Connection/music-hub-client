@@ -21,11 +21,13 @@ class App extends Component {
   };
 
   getAllUsers = () => {
-    axios.get(`http://localhost:5000/api/users`).then((responseFromApi) => {
-      this.setState({
-        usersFromDb: responseFromApi.data,
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/users`)
+      .then((responseFromApi) => {
+        this.setState({
+          usersFromDb: responseFromApi.data,
+        });
       });
-    });
   };
 
   getTheUser = (userObj, loggedIn) => {

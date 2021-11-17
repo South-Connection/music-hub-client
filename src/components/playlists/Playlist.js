@@ -9,7 +9,7 @@ class Playlist extends Component {
   state = { listOfPlaylists: [] }
 
   getAllPlaylists = () =>{
-    axios.get(`http://localhost:5000/api/playlists`, {withCredentials: true })
+    axios.get(`${process.env.REACT_APP_API_URL}/playlists`, {withCredentials: true })
     .then(responseFromApi => {
       this.setState({
         listOfPlaylists: responseFromApi.data
