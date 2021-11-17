@@ -7,8 +7,9 @@ class AddPlaylist extends Component {
   state = {
     title: "",
     description: "",
-    guests: ["", ...this.props.allUsers],
-    songs: [],
+    songName: "",
+    songLink: "",
+    guests: [],
   };
 
   handleFormSubmit = (event) => {
@@ -16,18 +17,30 @@ class AddPlaylist extends Component {
 
     const title = this.state.title;
     const description = this.state.description;
+    const songName = this.state.songName;
+    const songLink = this.state.songLink;
     const guests = this.state.guests;
-    const songs = this.state.songs;
 
     axios
-      .post("http://localhost:5000/api/playlists", {
-        title,
-        description,
-        guests,
-        songs,
-      }, {withCredentials: true })
+      .post(
+        "http://localhost:5000/api/playlists",
+        {
+          title,
+          description,
+          songName,
+          songLink,
+          guests,
+        },
+        { withCredentials: true }
+      )
       .then(() => {
-        this.setState({ title: "", description: "", guests: [], songs: [] }); 
+        this.setState({
+          title: "",
+          description: "",
+          guests: [],
+          songName: "",
+          songLink: "",
+        });
         this.props.history.push("/playlists");
       })
       .catch((error) => console.log(error));
@@ -38,22 +51,11 @@ class AddPlaylist extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSongs = (event) => {
-    const { name, value } = event.target;
-    
-    console.log("bonjour")
-    this.setState(prevState => ({
-      songs: {
-        ...prevState.songs,        
-        [name]: value,
-      }
-    }))
+  handleSelect = (event) => {   
+    this.setState({guests: Array.from(event.target.selectedOptions, (item) => item.value)})    
   };
 
   render() {
-    // console.log("hello", this.state.songs);
-    // console.log("hello 2", this.state.songs.title)
-    
     return (
       <div className="box">
         {/* <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
@@ -62,7 +64,7 @@ class AddPlaylist extends Component {
           <br />
           <input
             //key={this.state._id}
-            placeholder="Name"
+            placeholder="Playlist title"
             type="text"
             name="title"
             value={this.state.title}
@@ -83,32 +85,25 @@ class AddPlaylist extends Component {
           <input
             placeholder="song name"
             type="text"
-            name="title"
-            value={this.state.songs.title}
-            onChange={(e) => this.handleSongs(e)}
+            name="songName"
+            value={this.state.songName}
+            onChange={(e) => this.handleChange(e)}
           />
           <br />
           <input
             placeholder="song link"
             type="url"
-            name="link"
-            value={this.state.songs.link}
-            onChange={(e) => this.handleSongs(e)}
+            name="songLink"
+            value={this.state.songLink}
+            onChange={(e) => this.handleChange(e)}
           />
           <br />
           <label>Add guests</label>
           <br />
-          <select>
-            {this.state.guests.map((guest) => {
+          <select multiple onChange={(e) => this.handleSelect(e)}>
+            {this.props.allUsers.map((guest) => {
               return (
-                <option
-                  type="text"
-                  name="guest"
-                  // id="guest._id"
-                  multiple
-                  value={guest._id}
-                  onChange={(e) => this.handleChange(e)}
-                >
+                <option type="text" name="guest" value={guest._id}>
                   {guest.username}
                 </option>
               );

@@ -68,7 +68,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Router>
@@ -99,13 +98,10 @@ class App extends Component {
               )}
             />
             <Route exact path="/playlists" component={Playlist} />
-            
 
             <Route exact path="/playlists/:id" component={PlaylistDetails} />
 
-            
-             <Route exact path="/playlists/:id/edit" component={EditPlaylist} />
-
+            <Route exact path="/playlists/:id/edit" component={EditPlaylist} />
           </Switch>
         </Router>
       </div>
