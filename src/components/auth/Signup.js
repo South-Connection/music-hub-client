@@ -17,8 +17,8 @@ class Signup extends Component {
             username: "",
             password: "",
         });
-        this.props.history.push("/playlists");
         this.props.getUser(response, true);
+        this.props.history.push("/playlists");
     })
     .catch(error => {
         console.log(error);
