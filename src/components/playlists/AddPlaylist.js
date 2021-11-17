@@ -23,7 +23,7 @@ class AddPlaylist extends Component {
 
     axios
       .post(
-        "http://localhost:5000/api/playlists",
+        `${process.env.REACT_APP_API_URL}/playlists`,
         {
           title,
           description,
