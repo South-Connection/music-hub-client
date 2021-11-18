@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import authService from '../auth/auth-service';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import authService from "../auth/auth-service";
 
 class Navbar extends Component {
-
   logoutUser = () => {
     authService.logout().then(() => {
       this.props.getUser(null, false);
@@ -12,38 +11,49 @@ class Navbar extends Component {
 
   render() {
     const { userIsLoggedIn, userData } = this.props;
- 
+
     if (userIsLoggedIn) {
       return (
         <div className="nav-style">
-          <div className="logo">
-            <img src="/music-hub-logo.png" alt="music-hub"></img>
+          <div >
+            <Link className="logo" to="/playlists">
+              <img src="/music-hub-logo.png" alt="music-hub"></img>
+            </Link>
           </div>
           {/* <div> {userIsLoggedIn && <li>Welcome, {userData.username}</li>}</div> */}
           <nav className="links">
             <ul>
               <li className="nav-button">
-                <Link to="/playlists" style={{ textDecoration: "none" }}>
-                Playlists
+                <Link
+                  className="hover"
+                  to="/playlists"
+                  style={{ textDecoration: "none" }}
+                >
+                  Playlists
                 </Link>
               </li>
               <li className="nav-button">
-                <Link to="/playlists/create" style={{ textDecoration: "none" }}>
-                Create
+                <Link
+                  className="hover"
+                  to="/playlists/create"
+                  style={{ textDecoration: "none" }}
+                >
+                  Create
                 </Link>
               </li>
               <li className="nav-button">
                 <Link to="/">
-                <button onClick={() => this.logoutUser()}>Logout</button>
+                  <button className="logout" onClick={() => this.logoutUser()}>
+                    Logout
+                  </button>
                 </Link>
               </li>
             </ul>
           </nav>
         </div>
-      );  
+      );
     } else if (userData == null && userData == undefined) {
       return (
-        
         <div className="nav-style">
           <div className="logo">
             <img src="/music-hub-logo.png" alt="music-hub"></img>
@@ -51,7 +61,11 @@ class Navbar extends Component {
           <nav className="links">
             <ul>
               <li className="nav-button">
-                <Link to="/about" style={{ textDecoration: 'none' }}>
+                <Link
+                  className="hover"
+                  to="/about"
+                  style={{ textDecoration: "none" }}
+                >
                   About
                 </Link>
               </li>
