@@ -99,7 +99,14 @@ class App extends Component {
                 <AddPlaylist {...props} allUsers={this.state.usersFromDb} />
               )}
             />
-            <Route exact path="/playlists" component={Playlist} />
+            <Route
+              exact
+              path="/playlists"
+              render={(props) => (
+                <Playlist {...props} getUser={this.getTheUser} />
+              )}
+            />
+            {/* <Route exact path="/playlists" component={Playlist} /> */}
 
             <Route exact path="/playlists/:id" component={PlaylistDetails} />
 

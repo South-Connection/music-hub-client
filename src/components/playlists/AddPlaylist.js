@@ -58,7 +58,7 @@ class AddPlaylist extends Component {
   render() {
     return (
       <div className="box">
-        {/* <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
+        
         <form onSubmit={this.handleFormSubmit}>
           <label>Playlist name</label>
           <br />

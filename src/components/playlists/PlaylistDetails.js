@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
+import AddSong from "./AddSong";
 
 class PlaylistDetails extends Component {
-  state = {};
+  state = {
+    songs: [],
+    showComponent: false
+  };
 
   componentDidMount() {
     this.getSinglePlaylist();
+    this.pushNewSong();
   }
 
   getSinglePlaylist = () => {
@@ -24,6 +29,26 @@ class PlaylistDetails extends Component {
         { withCredentials: true }
       );
   };
+
+  renderForm = () => {
+    console.log("addsong")
+    this.setState({
+      showComponent: true,
+    });
+  }
+
+  hideForm = () => {
+    this.setState({
+      showComponent: false,
+    });
+  }
+
+  pushNewSong = () => {
+    this.setState(previousState => ({
+      songs: [...previousState.songs, 'new value']
+  }));
+  }
+
   // DELETE PROJECT:
   deleteProject = () => {
     const { params } = this.props.match;
@@ -70,8 +95,10 @@ class PlaylistDetails extends Component {
 
         <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
         <br />
+        {this.state.showComponent ? <AddSong thePlaylist={this.state} {...this.props}/> : null}
 
-        <button type="button">Add Song</button>
+        <button onClick={() => this.renderForm()}type="button">Add Song</button>
+        
 
         <br />
         <button onClick={() => this.deleteProject()}>Delete playlist</button>
