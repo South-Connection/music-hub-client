@@ -1,6 +1,6 @@
 Welcome to musicHub 
 
-![alt="musicHub-mainpage"]("./public/music-hub.png") 
+![alt="musicHub-mainpage"](./public/music-hub.png) 
 
 an app that functions as a collaborative playlist.
 
