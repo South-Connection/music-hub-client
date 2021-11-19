@@ -90,10 +90,7 @@ class PlaylistDetails extends Component {
           </div>
           
         )}
-        <br />
-
-        <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
-        <br />
+        
         {this.state.showComponent ? <AddSong getPlaylist={this.getSinglePlaylist} thePlaylist={this.state} {...this.props}/> : null}
 
         <div>
