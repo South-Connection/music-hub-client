@@ -72,7 +72,7 @@ class Login extends Component {
           </div>
           <p className="bottom">
             Don't have account?
-            <Link to={"/signup"}> Signup</Link>
+            <Link className="orange" to={"/signup"}> Signup</Link>
           </p>
         </form>
       </>

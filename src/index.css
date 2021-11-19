@@ -50,10 +50,10 @@ code {
 }
 
 .nav-button a {
-  color: #33ff99;
+  color: #33ffa0;
 }
 .box {
-  background-color: #33ff99;
+  background-color: #33ffa0;
   padding: 3%;
   max-width: 50vw;
   max-height: 50vh;
@@ -64,16 +64,16 @@ code {
 .logout {
   background-color: #9933cc00;
   border: none;
-  color: #33ff99;
+  color: #33ffa0;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
 .logout:hover {
-  color: #ffca75;
+  color: #fbb446;
 }
 .hover:hover {
-  color: #ffca75;
+  color: #fbb446;
 }
 
 /* PLAYLISTS */
@@ -86,7 +86,7 @@ h1 {
 }
 
 .box-container {
-  background-color: #33ff99;
+  background-color: #33ffa0;
   margin-top: 20vh;
   max-width: 40%;
   height: 63vh;
@@ -94,6 +94,7 @@ h1 {
   margin-top: 8vh;
   padding: 2%;
   border-radius: 10px;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.26);
 }
 
 .container {
@@ -115,7 +116,7 @@ h1 {
 }
 
 .list:hover {
-  background-color: #fad08c;
+  background-color:  #fbbc5e;
   width: 25%;
   height: 50rem;
   margin: 15px;
@@ -237,6 +238,11 @@ a > h3 {
   margin-top: 220px;
 }
 
+.orange:hover {
+  color: #fbbc5e;
+}
+
+
 /* DETAILS */
 
 .p-desc {
@@ -247,6 +253,15 @@ a > h3 {
   height: 2rem;
   border-radius: 5px;
   margin: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.109);
+
+}
+.test:hover {
+  background-color:  #fbbc5e;
+  height: 2rem;
+  border-radius: 5px;
+  margin: 10px;
+  box-shadow: 8px 5px 5px rgba(0, 0, 0, 0.212);
 
 }
 
@@ -271,7 +286,7 @@ a > h3 {
   color: white;
   font-size: 1.3rem;
   font-weight: bold;
-  line-height: 50px;
+  /* line-height: 50px; */
   padding: 0.5rem;
   
 }
@@ -294,7 +309,7 @@ a > h3 {
   color: white;
   font-size: 1.3rem;
   font-weight: bold;
-  line-height: 50px;
+  /* line-height: 50px; */
   padding: 0.5rem;
 }
 
@@ -308,7 +323,7 @@ a > h3 {
   color: white;
   font-size: 1.3rem;
   font-weight: bold;
-  line-height: 50px;
+  /* line-height: 100px; */
   padding: 0.5rem;
   
 }
@@ -330,6 +345,17 @@ a > h3 {
   color: white;
   font-size: 1.3rem;
   font-weight: bold;
-  line-height: 50px;
+  /* line-height: 50px; */
   padding: 0.5rem;
+}
+
+/* RANDOM */
+
+.text-line {
+  text-decoration: none;
+}
+
+.label {
+  color: #9825fa;
+  font-weight: bold;
 }

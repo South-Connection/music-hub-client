@@ -55,7 +55,7 @@ class AddSong extends Component {
     return (
       <form onSubmit={(e) => this.handleFormSubmit(e)}>
         <div >
-          <label>Add song:</label>
+          <label className="label">Add song</label>
           <br />
           <input className="input-add"
             placeholder="song name"

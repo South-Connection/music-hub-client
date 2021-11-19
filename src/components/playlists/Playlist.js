@@ -32,7 +32,7 @@ class Playlist extends Component {
           {this.state.listOfPlaylists.map((playlist) => {
             return (
               <div className="list" key={playlist._id}>
-                <Link to={`/playlists/${playlist._id}`}>
+                <Link className="text-line" to={`/playlists/${playlist._id}`}>
                   <h3>{playlist.title}</h3>
                 </Link>
               </div>

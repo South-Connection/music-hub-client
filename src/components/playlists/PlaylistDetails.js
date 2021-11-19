@@ -82,7 +82,7 @@ class PlaylistDetails extends Component {
               {this.state.songs.map((elm) => {
                 return (
                   <div className="test" key={elm._id}>
-                    <Link to={{ pathname: `${elm.link}` }} target="_blank" >{elm.title}</Link>
+                    <Link className="text-line" to={{ pathname: `${elm.link}` }} target="_blank" >{elm.title}</Link>
                   </div>
                 );
               })}
@@ -102,7 +102,7 @@ class PlaylistDetails extends Component {
         </div>
 
 
-        <Link to={"/playlists"}>Back to playlists</Link>
+        <Link className="orange" to={"/playlists"}>Back to playlists</Link>
         <br />
       </div>
     );

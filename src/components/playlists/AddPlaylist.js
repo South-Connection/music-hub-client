@@ -64,7 +64,7 @@ class AddPlaylist extends Component {
         <h1>Create my playlist</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-          <label>Playlist name</label>
+          <label className="label">Playlist name</label>
           <br />
           <input
             //key={this.state._id}
@@ -86,7 +86,7 @@ class AddPlaylist extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <br />
-          <label>Add song:</label>
+          <label className="label">Add song</label>
           <br />
           <input
             className="input"
@@ -106,7 +106,7 @@ class AddPlaylist extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <br />
-          <label>Add guests</label>
+          <label className="label">Add guests</label>
           <br />
           <select
             className="big-input"
