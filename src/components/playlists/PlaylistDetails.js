@@ -17,7 +17,7 @@ class PlaylistDetails extends Component {
   getSinglePlaylist = () => {
     const { params } = this.props.match;
     axios
-      .get(`${process.env.REACT_APP_API_URL}/playlists/${params.id}`)
+      .get(`${process.env.REACT_APP_API_URL}/playlists/${params.id}`, { withCredentials: true })
       .then((responseFromApi) => {
         const thePlaylist = responseFromApi.data;
         this.setState(thePlaylist);
@@ -26,7 +26,6 @@ class PlaylistDetails extends Component {
         (err) => {
           console.log(err);
         },
-        { withCredentials: true }
       );
   };
 
@@ -50,7 +49,7 @@ class PlaylistDetails extends Component {
   }
 
   // DELETE PROJECT:
-  deleteProject = () => {
+  deletePlaylist = () => {
     const { params } = this.props.match;
     console.log("hello clg", params);
     axios
@@ -93,16 +92,16 @@ class PlaylistDetails extends Component {
         )}
         <br />
 
-        {/* <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
-        <br /> */}
-        {this.state.showComponent ? <AddSong getPlaylist={this.getSinglePlaylist} {...this.props} thePlaylist={this.state} {...this.props}/> : null}
+        <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
+        <br />
+        {this.state.showComponent ? <AddSong getPlaylist={this.getSinglePlaylist} thePlaylist={this.state} {...this.props}/> : null}
 
         <div>
         <button className="second-btn" onClick={() => this.renderForm()}type="button">Add Song</button>
         
 
         
-        <button className="second-btn" onClick={() => this.deleteProject()}>Delete</button>
+        <button className="second-btn" onClick={() => this.deletePlaylist()}>Delete</button>
         </div>
 
 

@@ -1,2 +1,2 @@
-/api/* https://<server-url>:<server-port>/:splat 200
+/api/*  https://music-hub-ironhack.herokuapp.com/:splat 200
 /*    /index.html   200

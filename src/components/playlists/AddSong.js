@@ -34,8 +34,8 @@ class AddSong extends Component {
           songName: "",
           songLink: "",
         });
-        this.getSinglePlaylist()
-        this.props.history.push(`/playlists/${this.state._id}`);
+        this.props.getPlaylist();
+        this.props.history.push(`/playlists/${this.props.thePlaylist._id}`);
       })
       .catch((error) => console.log(error));
   };
