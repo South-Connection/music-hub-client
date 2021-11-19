@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 // import Playlist from "./Playlist";
 // import Navbar from "../navbar/Navbar";
 
@@ -51,15 +52,17 @@ class AddPlaylist extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSelect = (event) => {   
-    this.setState({guests: Array.from(event.target.selectedOptions, (item) => item.value)})    
+  handleSelect = (event) => {
+    this.setState({
+      guests: Array.from(event.target.selectedOptions, (item) => item.value),
+    });
   };
 
   render() {
     return (
       <div className="box-container">
-      <h1>Create my playlist</h1>
-        
+        <h1>Create my playlist</h1>
+
         <form onSubmit={this.handleFormSubmit}>
           <label>Playlist name</label>
           <br />
@@ -75,7 +78,7 @@ class AddPlaylist extends Component {
           <br />
           <label></label>
           <textarea
-          className="input"
+            className="input"
             placeholder="Description"
             type="text"
             name="description"
@@ -86,7 +89,7 @@ class AddPlaylist extends Component {
           <label>Add song:</label>
           <br />
           <input
-          className="input"
+            className="input"
             placeholder="song name"
             type="text"
             name="songName"
@@ -95,7 +98,7 @@ class AddPlaylist extends Component {
           />
           <br />
           <input
-          className="input"
+            className="input"
             placeholder="song link"
             type="url"
             name="songLink"
@@ -105,7 +108,11 @@ class AddPlaylist extends Component {
           <br />
           <label>Add guests</label>
           <br />
-          <select className="big-input" multiple onChange={(e) => this.handleSelect(e)}>
+          <select
+            className="big-input"
+            multiple
+            onChange={(e) => this.handleSelect(e)}
+          >
             {this.props.allUsers.map((guest) => {
               return (
                 <option type="text" name="guest" value={guest._id}>

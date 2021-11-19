@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url(pysche.jpg); */
+
 }
 
 code {
@@ -18,7 +18,7 @@ code {
 .nav-style {
   height: 10vh;
   width: 100vw;
-  background-color: #9933cc;
+  background-color: #9825fa;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,18 +129,19 @@ h1 {
 }
 
 a > h3 {
-  color: #9933cc;
+  color: #9825fa;
   margin: auto;
   text-align: center;
   line-height: 50px;
 }
 
 .main-btn {
-  background-color: #9933cc;
+  background-color: #9825fa;
   width: 200px;
   height: 50px;
   margin: auto;
   margin-bottom: 2rem;
+  margin-top: 28%;
   text-decoration: none;
   border-radius: 5px;
   color: white;
@@ -158,11 +159,12 @@ a > h3 {
 }
 
 .main-btn:hover {
-  background-color: #ac38e6;
+  background-color: #b028ff;
   width: 200px;
   height: 50px;
   margin: auto;
   margin-bottom: 2rem;
+  margin-top: 28%;
   text-decoration: none;
   border-radius: 5px;
   color: white;
@@ -202,7 +204,7 @@ a > h3 {
 }
 
 .login {
-  background-color: #9933cc;
+  background-color: #9825fa;
   width: 200px;
   height: 50px;
   margin: auto;
@@ -216,7 +218,7 @@ a > h3 {
 }
 
 .login:hover {
-  background-color: #ac38e6;
+  background-color: #b028ff;
   width: 200px;
   height: 50px;
   margin: auto;
@@ -233,4 +235,101 @@ a > h3 {
 
 .bottom {
   margin-top: 220px;
+}
+
+/* DETAILS */
+
+.p-desc {
+  font-size: 1rem;
+}
+.test {
+  background-color: white;
+  height: 2rem;
+  border-radius: 5px;
+  margin: 10px;
+
+}
+
+.input-add {
+  width: 400px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 15;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+
+.second-btn {
+  background-color: #9825fa;
+  width: 180px;
+  height: 50px;
+  margin: 10px;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 50px;
+  padding: 0.5rem;
+  
+}
+
+.second-btn-text {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.second-btn:hover {
+  background-color: #b028ff;
+  width: 180px;
+  height: 50px;
+  margin: 10px;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 50px;
+  padding: 0.5rem;
+}
+
+.third-btn {
+  background-color: #9825fa;
+  width: 120px;
+  height: 50px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 50px;
+  padding: 0.5rem;
+  
+}
+
+.third-btn-text {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.third-btn:hover {
+  background-color: #b028ff;
+  width: 120px;
+  height: 50px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 50px;
+  padding: 0.5rem;
 }

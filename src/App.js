@@ -12,6 +12,7 @@ import PlaylistDetails from "./components/playlists/PlaylistDetails";
 import EditPlaylist from "./components/playlists/EditPlaylist";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
+
 class App extends Component {
   //adding state in order to keep track of user
   state = {
@@ -71,7 +72,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ 
+        backgroundImage: `url("/imgs/background-pysche.jpg")`
+      }}>
         <Router>
           <Navbar
             userData={this.state.user}

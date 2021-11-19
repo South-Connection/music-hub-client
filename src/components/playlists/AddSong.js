@@ -7,6 +7,10 @@ class AddSong extends Component {
     songLink: "",
   };
 
+  // componentDidMount() {
+  //   this.getSinglePlaylist();
+  // }
+
   handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -30,7 +34,7 @@ class AddSong extends Component {
           songName: "",
           songLink: "",
         });
-        //method
+        this.getSinglePlaylist()
         this.props.history.push(`/playlists/${this.state._id}`);
       })
       .catch((error) => console.log(error));
@@ -50,10 +54,10 @@ class AddSong extends Component {
   render() {
     return (
       <form onSubmit={(e) => this.handleFormSubmit(e)}>
-        <div className="box">
+        <div >
           <label>Add song:</label>
           <br />
-          <input
+          <input className="input-add"
             placeholder="song name"
             type="text"
             name="songName"
@@ -61,7 +65,7 @@ class AddSong extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <br />
-          <input
+          <input className="input-add"
             placeholder="song link"
             type="url"
             name="songLink"
@@ -70,7 +74,7 @@ class AddSong extends Component {
           />
 
           <br />
-          <input type="submit" value="Submit" />
+          <input className="third-btn" type="submit" value="Submit" />
         </div>
       </form>
     );

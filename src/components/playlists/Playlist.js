@@ -27,11 +27,7 @@ class Playlist extends Component {
     return (
       <div className="box-container">
         <h1>My playlists</h1>
-        <div className="main-btn">
-          <Link className="main-btn-text" to="/playlists/create">
-            Create your playlist
-          </Link>
-        </div>
+        
         <div className="container">
           {this.state.listOfPlaylists.map((playlist) => {
             return (
@@ -42,6 +38,11 @@ class Playlist extends Component {
               </div>
             );
           })}
+        </div>
+        <div className="main-btn">
+          <Link className="main-btn-text" to="/playlists/create">
+            New Playlist
+          </Link>
         </div>
       </div>
     );

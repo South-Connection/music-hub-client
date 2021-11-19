@@ -69,20 +69,20 @@ class PlaylistDetails extends Component {
   render() {
     
     return (
-      <div>
+      <div className="box-container">
         {this.state.songs === undefined ? (
           <p>Loading...</p>
         ) : (
-          <div>
+          <div >
             <h1>{this.state.title}</h1>
-            <p>{this.state.description}</p>
+            <p className="p-desc">{this.state.description}</p>
 
             <br />
 
-            <div>
+            <div >
               {this.state.songs.map((elm) => {
                 return (
-                  <div key={elm._id}>
+                  <div className="test" key={elm._id}>
                     <Link to={{ pathname: `${elm.link}` }} target="_blank" >{elm.title}</Link>
                   </div>
                 );
@@ -93,16 +93,18 @@ class PlaylistDetails extends Component {
         )}
         <br />
 
-        <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
-        <br />
-        {this.state.showComponent ? <AddSong thePlaylist={this.state} {...this.props}/> : null}
+        {/* <Link to={`/playlists/${this.state._id}/edit`}>Edit playlist</Link>
+        <br /> */}
+        {this.state.showComponent ? <AddSong getPlaylist={this.getSinglePlaylist} {...this.props} thePlaylist={this.state} {...this.props}/> : null}
 
-        <button onClick={() => this.renderForm()}type="button">Add Song</button>
+        <div>
+        <button className="second-btn" onClick={() => this.renderForm()}type="button">Add Song</button>
         
 
-        <br />
-        <button onClick={() => this.deleteProject()}>Delete playlist</button>
-        <br />
+        
+        <button className="second-btn" onClick={() => this.deleteProject()}>Delete</button>
+        </div>
+
 
         <Link to={"/playlists"}>Back to playlists</Link>
         <br />
