@@ -38,43 +38,46 @@ class Signup extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.handleFormSubmit}>
-          <h2>Signup</h2>
+        <form className="box-container" onSubmit={this.handleFormSubmit}>
+          <h1>Signup</h1>
           {this.state.errorMessage && (
             <h3 className="error"> {this.state.errorMessage} </h3>
           )}
+          <div className="container-column">
+            <label>
+              <input
+                className="input"
+                type="text"
+                required
+                name="username"
+                placeholder="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </label>
 
-          <label>
-            Username:
-            <input
-              type="text"
-              required
-              name="username"
-              placeholder="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </label>
+            <label>
+              <input
+                className="input"
+                type="password"
+                required
+                name="password"
+                placeholder="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            </label>
 
-          <label>
-            Password:
-            <input
-              type="password"
-              required
-              name="password"
-              placeholder="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button type="submit"> Signup </button>
+            <button className="login" type="submit">
+              {" "}
+              Signup{" "}
+            </button>
+          </div>
+          <p className="bottom">
+            Already have an account?
+            <Link to={"/"}> Login</Link>
+          </p>
         </form>
-
-        <p>
-          Already have an account?
-          <Link to={"/"}> Login</Link>
-        </p>
       </>
     );
   }

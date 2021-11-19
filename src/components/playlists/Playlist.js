@@ -16,21 +16,8 @@ class Playlist extends Component {
         this.setState({
           listOfPlaylists: responseFromApi.data,
         });
-        // console.log("hello response", responseFromApi);
-        // console.log(typeof responseFromApi.data);
-        // console.log("hello owner", responseFromApi.data[0].owner);
       });
   };
-
-  //get playlist I own or guest
-  // getAllowedPlaylists = () => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/playlists`, {withCredentials: true })
-  //   .then(responseFromApi => {
-  //     responseFromApi.data.owner
-
-  //   }
-
-  // }
 
   componentDidMount() {
     this.getAllPlaylists();
@@ -38,11 +25,17 @@ class Playlist extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="box-container">
+        <h1>My playlists</h1>
+        <div className="main-btn">
+          <Link className="main-btn-text" to="/playlists/create">
+            Create your playlist
+          </Link>
+        </div>
+        <div className="container">
           {this.state.listOfPlaylists.map((playlist) => {
             return (
-              <div key={playlist._id}>
+              <div className="list" key={playlist._id}>
                 <Link to={`/playlists/${playlist._id}`}>
                   <h3>{playlist.title}</h3>
                 </Link>
@@ -50,9 +43,6 @@ class Playlist extends Component {
             );
           })}
         </div>
-        <Link to="/playlists/create" className="btn-create">
-          Create your playlist
-        </Link>
       </div>
     );
   }

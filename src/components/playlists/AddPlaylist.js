@@ -57,13 +57,15 @@ class AddPlaylist extends Component {
 
   render() {
     return (
-      <div className="box">
+      <div className="box-container">
+      <h1>Create my playlist</h1>
         
         <form onSubmit={this.handleFormSubmit}>
           <label>Playlist name</label>
           <br />
           <input
             //key={this.state._id}
+            className="input"
             placeholder="Playlist title"
             type="text"
             name="title"
@@ -73,6 +75,7 @@ class AddPlaylist extends Component {
           <br />
           <label></label>
           <textarea
+          className="input"
             placeholder="Description"
             type="text"
             name="description"
@@ -83,6 +86,7 @@ class AddPlaylist extends Component {
           <label>Add song:</label>
           <br />
           <input
+          className="input"
             placeholder="song name"
             type="text"
             name="songName"
@@ -91,6 +95,7 @@ class AddPlaylist extends Component {
           />
           <br />
           <input
+          className="input"
             placeholder="song link"
             type="url"
             name="songLink"
@@ -100,7 +105,7 @@ class AddPlaylist extends Component {
           <br />
           <label>Add guests</label>
           <br />
-          <select multiple onChange={(e) => this.handleSelect(e)}>
+          <select className="big-input" multiple onChange={(e) => this.handleSelect(e)}>
             {this.props.allUsers.map((guest) => {
               return (
                 <option type="text" name="guest" value={guest._id}>
@@ -110,7 +115,7 @@ class AddPlaylist extends Component {
             })}
           </select>
           <br />
-          <input type="submit" value="Submit" />
+          <input className="login" type="submit" value="Submit" />
         </form>
       </div>
     );
