@@ -1,6 +1,6 @@
-Welcome to musicHub
+Welcome to musicHub 
 
-<img src="./public/music-hub.png" alt="musicHub-mainpage" width="500" height="400">
+![alt="musicHub-mainpage"]("./public/music-hub.png") 
 
 an app that functions as a collaborative playlist.
 
@@ -13,6 +13,5 @@ https://music-hub-ironhack.netlify.app/
 link to server repository:
 https://github.com/South-Connection/music-hub-server
 
-link to client repository:
-https://github.com/South-Connection/music-hub-client
+
 
